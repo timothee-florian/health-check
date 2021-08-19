@@ -18,9 +18,10 @@ def check_cpu_usage():
     return usage < 80
 
 def check_available_memory():
+    """Verifies that there's enough RAM memory"""
     memory  = psutil.virtual_memory()
     free_memory = memory.available
-    return free_memory < 500 *2**20
+    return free_memory > 500 *2**20
 
 def check_localhost():
     return socket.gethostbyaddr("127.0.0.1")[0] == 'localhost'
